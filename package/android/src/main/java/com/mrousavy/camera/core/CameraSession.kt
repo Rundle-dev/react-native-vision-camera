@@ -365,6 +365,12 @@ class CameraSession(private val context: Context, private val cameraManager: Cam
     val device = cameraDevice ?: throw NoCameraDeviceError()
     val captureSession = captureSession ?: throw CameraNotReadyError()
 
+    if (config.isDestroyed) {
+      captureSession.stopRepeating()
+      destroy()
+      return
+    }
+
     if (!config.isActive) {
       // TODO: Do we want to do stopRepeating() or entirely destroy the session?
       // If the Camera is not active, we don't do anything.

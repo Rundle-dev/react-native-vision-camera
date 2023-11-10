@@ -37,6 +37,9 @@ data class CameraConfiguration(
   // isActive (Start/Stop)
   var isActive: Boolean = false,
 
+  var isAttached: Boolean = false,
+  var isDestroyed: Boolean = false,
+
   // Audio Session
   var audio: Output<Audio> = Output.Disabled.create()
 ) {

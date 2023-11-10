@@ -193,6 +193,12 @@ class CameraView(context: Context) :
         // Zoom
         config.zoom = zoom
 
+        // Destroy
+        if (config.isAttached && !isAttachedToWindow) {
+          config.isDestroyed = true
+        }
+        config.isAttached = isAttachedToWindow;
+
         // isActive
         config.isActive = isActive && isAttachedToWindow
       }
